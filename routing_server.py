@@ -30,12 +30,15 @@ logger = logging.getLogger('routing')
 voice_url = '/usr/share/freeswitch/sounds/en/us/callie/voicemail/8000/vm-enter_pass.wav'
 target_mobile_url = 'sofia/internal/{0}@172.16.29.2:5060'
 
+
 class ESLRequestHandler(SocketServer.BaseRequestHandler):
-	def __init__(self):
+	def __init__(self, request, client_address, server):
 		self.routing_server = RoutingServer()
+		return
 
 
 	def setup(self):
+		logger.info("%s connected", self.client_address)
 		fd = self.request.fileno()
 		con = ESL.ESLconnection(fd)
 
