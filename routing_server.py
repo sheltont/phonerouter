@@ -8,11 +8,10 @@ from routing import RoutingServer
 from logging.handlers import RotatingFileHandler
 
 
-Rthandler = RotatingFileHandler('/var/log/freeswitch/phonerouter.log', maxBytes=10*1024*1024, backupCount=5)
-Rthandler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
-Rthandler.setFormatter(formatter)
-logging.getLogger('').addHandler(Rthandler)
+#Rthandler = RotatingFileHandler('/var/log/freeswitch/phonerouter.log', maxBytes=10*1024*1024, backupCount=5)
+#Rthandler.setLevel(logging.DEBUG)
+#formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+#Rthandler.setFormatter(formatter)
 
 
 console = logging.StreamHandler()
