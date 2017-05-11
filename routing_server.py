@@ -86,6 +86,7 @@ if __name__ == '__main__':
 	logger.info("listening on the TCP {0}:{1}".format(listen_ip, listen_port))
 	try:
 		SocketServer.ThreadingTCPServer.allow_reuse_address = True
+		print "listening on the port", listen_port
 		server = SocketServer.ThreadingTCPServer((listen_ip, listen_port), ESLRequestHandler)
 		server.serve_forever()
 	except KeyboardInterrupt:
