@@ -37,7 +37,7 @@ class ESLRequestHandler(SocketServer.BaseRequestHandler):
 
 
 	def setup(self):
-		logger.info("%d connected", self.client_address)
+		logger.info("%s connected", self.client_address)
 		fd = self.request.fileno()
 		con = ESL.ESLconnection(fd)
 
