@@ -46,10 +46,12 @@ class ESLRequestHandler(SocketServer.BaseRequestHandler):
 			info = con.getInfo()
 			uuid = info.getHeader("unique-id")
 			logger.info('the incoming call uuid is: %s', uuid)
+			print uuid
 			event = con.filter("unique-id", uuid)
 			con.events("plain", "all")
 			con.execute("answer", "", uuid)
 			msg = "%d %d 1 5000 # %s silence_stream://250".format(max_sid_len, max_sid_len, voice_url)
+			print msg
 			logger.info('play_and_get_digits: %s', msg)
 			con.execute("play_and_get_digits", msg)
 			digits = []
@@ -63,12 +65,14 @@ class ESLRequestHandler(SocketServer.BaseRequestHandler):
 						digit = e.getHeader("dtmf-digit")
 						logger.debug("digit: %s", digit)
 						digits.append(digit)
+						print digit
 				if len(digits) == max_sid_len:
 					break
 
 			logger.debug('collecting digits: %s', digits)
 			if len(digits) == max_sid_len:
 				sid = ''.join(digits)
+				print sid
 				mobile = self.routing_server.get_mobile(sid)
 				if mobile:
 					target = "{0} XML default".format(mobile)
