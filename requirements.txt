@@ -2,4 +2,4 @@ python-esl
 redis
 requests
 flask
-flask.ext
+flask-restful
